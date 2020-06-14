@@ -99,6 +99,12 @@
       <DependentUpon>ClientAppProtection3.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Govno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Govno.Designer.cs">
+      <DependentUpon>Govno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ClientAppProtection1And2.resx">
