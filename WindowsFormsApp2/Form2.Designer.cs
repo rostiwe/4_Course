@@ -49,6 +49,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.лабораторнаяРабота3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,14 +131,14 @@
             // лР1ToolStripMenuItem
             // 
             this.лР1ToolStripMenuItem.Name = "лР1ToolStripMenuItem";
-            this.лР1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.лР1ToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.лР1ToolStripMenuItem.Text = "ЛР1 и ЛР2";
             this.лР1ToolStripMenuItem.Click += new System.EventHandler(this.лР1ToolStripMenuItem_Click);
             // 
             // лР3ToolStripMenuItem
             // 
             this.лР3ToolStripMenuItem.Name = "лР3ToolStripMenuItem";
-            this.лР3ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.лР3ToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.лР3ToolStripMenuItem.Text = "ЛР3";
             this.лР3ToolStripMenuItem.Click += new System.EventHandler(this.лР3ToolStripMenuItem_Click);
             // 
@@ -145,7 +146,8 @@
             // 
             this.защитаОтВПToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.лабораторнаяРабота1ToolStripMenuItem,
-            this.лабораторнаяРабота2ToolStripMenuItem});
+            this.лабораторнаяРабота2ToolStripMenuItem,
+            this.лабораторнаяРабота3ToolStripMenuItem});
             this.защитаОтВПToolStripMenuItem.Name = "защитаОтВПToolStripMenuItem";
             this.защитаОтВПToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.защитаОтВПToolStripMenuItem.Text = "Защита от ВП";
@@ -211,6 +213,12 @@
             this.textBox2.Size = new System.Drawing.Size(800, 379);
             this.textBox2.TabIndex = 4;
             // 
+            // лабораторнаяРабота3ToolStripMenuItem
+            // 
+            this.лабораторнаяРабота3ToolStripMenuItem.Name = "лабораторнаяРабота3ToolStripMenuItem";
+            this.лабораторнаяРабота3ToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.лабораторнаяРабота3ToolStripMenuItem.Text = "Лабораторная Работа 3";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,5 +263,6 @@
         private System.Windows.Forms.ToolStripMenuItem лабораторнаяРабота1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem лабораторнаяРабота2ToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ToolStripMenuItem лабораторнаяРабота3ToolStripMenuItem;
     }
 }

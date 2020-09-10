@@ -96,7 +96,7 @@
             this.progressBar1.Location = new System.Drawing.Point(12, 74);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(208, 23);
-            this.progressBar1.Step = 2;
+            this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 3;
             // 
             // splitContainer1
@@ -152,7 +152,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(96, 47);
             this.button5.TabIndex = 9;
-            this.button5.Text = "Подтвердить изенения в матрице";
+            this.button5.Text = "Подтвердить изменения в матрице";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 

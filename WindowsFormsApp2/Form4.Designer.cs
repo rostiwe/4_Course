@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp2
 {
-    partial class Govno
+    partial class Form4
     {
         /// <summary>
         /// Required designer variable.

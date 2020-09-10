@@ -66,10 +66,19 @@ namespace WindowsFormsApp2
                 MessageBox.Show("Введёное значение неверно. Попробуй снова!");
                 return;
             }
-            MessageBox.Show("Вторая цифра числа: "+ textBox11.Text[1]);
-            numb_entering(out a,"A",textBox12.Text, form2);
-            numb_entering(out b, "B", textBox13.Text, form2);
-            numb_entering(out c, "C", textBox14.Text, form2);
+            try
+            {
+                MessageBox.Show("Вторая цифра числа: " + textBox11.Text[1]);
+                numb_entering(out a, "A", textBox12.Text, form2);
+                numb_entering(out b, "B", textBox13.Text, form2);
+                numb_entering(out c, "C", textBox14.Text, form2);
+            }
+            catch(Exception ex)
+            {
+                form2.Ex_Log(ex);
+                MessageBox.Show("Error: Что то не так с введённым числом");
+                return;
+            }
             if (a == 0|| b == 0|| c == 0) return;
             try
             {
