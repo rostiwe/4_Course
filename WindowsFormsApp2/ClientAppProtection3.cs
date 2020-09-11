@@ -251,6 +251,28 @@ namespace WindowsFormsApp2
             }
             return x;
         }
+        int[] FormatAdapter(string t)
+        {
+            // Переводит строку в массив цифр
+            // Логика прописанна в int[] StandartCheck
+            int n = t.Length / 6 + 1;
+
+            if (t.Length % 6 == 0)
+                n--;
+            int[] x = new int[n];
+            for (int i = 0; i < x.Length; i++)
+            {
+                if (i == x.Length - 1)
+                {
+                    x[i] = Convert.ToInt32(t.Substring(0, t.Length - 6 * i));
+                }
+                else
+                {
+                    x[i] = Convert.ToInt32(t.Substring((t.Length) - 6 * (i + 1), 6));
+                }
+            }
+            return x;
+        }
         int[] summ(int[] x, int[] y)
         {
             // Суммирует два больших числа
@@ -730,6 +752,67 @@ namespace WindowsFormsApp2
             }
             return resoult;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int[] d, a, n;
+            a = FormatAdapter(textBox3);
+            d = FormatAdapter(textBox1);
+            n = FormatAdapter(textBox2);
+            int a1;
+            try
+            {
+                a1 = Convert.ToInt32(textBox2.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Очень много точек, график не построить");
+                return;
+            }
+            int leng = Convert.ToString(Point_Count(d, a, FormatAdapter(a1.ToString()))).Length;
+            double[] points = new double[a1];
+            points[points.Length - 1] = First_pointmacker(Point_Count(d, a, FormatAdapter(a1.ToString())));
+            for (int i = 1; i < a1;i++)
+            {
+                points[i-1] = pointmacker(Point_Count(d, a, FormatAdapter(i.ToString())), leng);
+            }
+            Grafic grafic = new Grafic(points,leng);
+            grafic.Show();
+        }
+        private double First_pointmacker(string str)
+        {
+            if (str.Length > 6)
+                str = str.Substring(0, 6);
+            return Convert.ToDouble(str);
+        }
+        private double pointmacker (string str,int leng)
+        {
+            if (leng - str.Length > 6)
+                return Convert.ToDouble(0);
+            if (str.Length>6)
+            str = str.Substring(0, 6 - (leng - str.Length));
+            return Convert.ToDouble(str);
+        }
+        string Point_Count(int[] d, int[] a, int[] n)
+        {
+            // Выводит в тектовое поле сразу результат суммы
+            // Используется формулла суммы первых n членов арифметической прогрессии
+            int[] Nbuf = new int[n.Length];
+            Array.Copy(n, Nbuf, n.Length);
+            int[] d1 = new int[d.Length];
+            Array.Copy(d, d1, d.Length);
+            int[] a1 = new int[a.Length];
+            Array.Copy(a, a1, a.Length);
+            int[] n1 = new int[n.Length];
+            Array.Copy(n, n1, n.Length);
+            int[] resoult = EasyCalculationA(d1, a1, n1);
+            resoult = summ(a1, resoult);
+            resoult = multiplication(resoult, n1);
+            resoult = DivideByTwo(resoult);
+            return StringMaker(resoult);
+
+        }
+
         int[] DivideByTwo(int[] x)
         {
             // Деление на 2

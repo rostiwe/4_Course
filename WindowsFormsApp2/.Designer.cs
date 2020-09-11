@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.textBox3);
@@ -130,11 +132,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(738, 3);
+            this.button2.Location = new System.Drawing.Point(776, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(59, 23);
+            this.button2.Size = new System.Drawing.Size(21, 23);
             this.button2.TabIndex = 6;
-            this.button2.Text = "помощь";
+            this.button2.Text = "?";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -142,7 +144,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(657, 10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 36);
+            this.button1.Size = new System.Drawing.Size(51, 36);
             this.button1.TabIndex = 5;
             this.button1.Text = "Пуск";
             this.button1.UseVisualStyleBackColor = true;
@@ -206,6 +208,16 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "999999888888";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(714, 10);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(56, 36);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "График";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // ClientAppProtection3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,5 +254,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Button button3;
     }
 }

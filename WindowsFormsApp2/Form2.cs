@@ -13,6 +13,7 @@ namespace WindowsFormsApp2
 {
     public partial class Form2 : Form
     {
+        bool mark = true;
         ToolStripLabel datelabe1, timelabe1, infolabe1;
         ToolStripProgressBar toolStripProgressBar2;
         Timer Timer;
@@ -58,7 +59,7 @@ namespace WindowsFormsApp2
             saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel) return;
             filename = saveFileDialog1.FileName;
-            System.IO.File.WriteAllText(filename, textBox2.Text);
+            System.IO.File.WriteAllText(filename, richTextBox1.Text);
             MessageBox.Show("Файл сохранён");
         }
 
@@ -67,7 +68,7 @@ namespace WindowsFormsApp2
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
             filename = openFileDialog1.FileName;
             string filetext = System.IO.File.ReadAllText(filename);
-            textBox2.Text = filetext;
+            richTextBox1.Text = filetext;
             MessageBox.Show("Файл открыт");
         }
 
@@ -89,14 +90,14 @@ namespace WindowsFormsApp2
             saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel) return;
             filename = saveFileDialog1.FileName;
-            System.IO.File.WriteAllText(filename, textBox2.Text);
-            textBox2.Text = "";
+            System.IO.File.WriteAllText(filename, richTextBox1.Text);
+            richTextBox1.Text = "";
             MessageBox.Show("Ну всё");
         }
 
         private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textBox2.Text = "";
+            richTextBox1.Text = "";
         }
 
         private void лР3ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -107,15 +108,186 @@ namespace WindowsFormsApp2
 
         public void Ex_Log (Exception ex)
         {
-            textBox2.Text += ex.Message + "\n\r" + ex.Source + "\n\r" + ex.StackTrace + "\n\r" + ex.TargetSite + "\n\r" + "\n\r" + "\n\r";
+            mark = false;
+            richTextBox1.Text += "Вемя записи: "+DateTime.Now.ToString() + "\n" + ex.Message + "\n" + ex.Source + "\n" + ex.StackTrace + "\n" + ex.TargetSite + "\n" + "\n\r";
+
+            mark = true;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text != "")
+            {
+                richTextBox1.SelectAll();
+                richTextBox1.SelectionColor = Color.Black;
+                string str = richTextBox1.Text.ToUpper();
+                int x = 0, z = 0;
+                while (true)
+                {
+                    if (str.Contains(textBox2.Text.ToUpper()))
+                    {
+                        str = str.Remove(str.IndexOf(textBox2.Text.ToUpper()), textBox2.Text.Length);
+                        x++;
+                    }
+                    else break;
+                }
+                for (int i = 0; i < x; i++)
+                {
+                    richTextBox1.Find(textBox2.Text, z, RichTextBoxFinds.None);
+                    richTextBox1.SelectionColor = Color.Red;
+                    z = richTextBox1.Find(textBox2.Text, z, RichTextBoxFinds.None) + textBox2.Text.Length;
+                }
+                mark = true;
+            }
+            else MessageBox.Show("Строка поиска пуста");
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (mark)
+            {
+                richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.Text.Length - 1, DateTime.Now.ToString() + " Ручная запись: \n");
+                mark = false;
+            }
+            
+        }
+
+        private void лабораторнаяРабота3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form4 Form4 = new Form4(this);
+            Form4.Show();
+        }
+
         public void Ex_Log(string Message, string Source, string TargetSite)
         {
-            textBox2.Text += Message + "\n\r" + Source + "\n\r"+ TargetSite + "\n\r" + "\n\r" + "\n\r";
+
+            richTextBox1.Text += "Вемя записи: "+ DateTime.Now.ToString() + "\n" + Message + "\n" + Source + "\n"+ TargetSite + "\n" + "\n" + "\n";
         }
         public string GetLogString ()
         {
-            return textBox2.Text;
+            return richTextBox1.Text;
+        }
+        public void Pars (int StartH, int StartM, int StartS, int EndH, int EndM, int EndS)
+        {
+            bool b = true;
+            richTextBox1.SelectAll();
+            richTextBox1.SelectionColor = Color.Black;
+            int z = 0,x = 0,x1 = 0;
+            while (true)
+            {
+                x = richTextBox1.Find("Вемя записи: ", z, RichTextBoxFinds.None);
+                if (x == -1)
+                {
+                    MessageBox.Show("Попробуйте раньше");
+                    return;
+                }
+                if (b)
+                {
+                    if (Convert.ToInt32(richTextBox1.Text.Substring(x + 24, 2)) > EndH)
+                    {
+                        MessageBox.Show("Все записи сделаны позже");
+                        return;
+                    }
+                    else if (Convert.ToInt32(richTextBox1.Text.Substring(x + 24, 2)) == EndH)
+                    {
+                        if (Convert.ToInt32(richTextBox1.Text.Substring(x + 27, 2)) > EndM)
+                        {
+                            MessageBox.Show("Все записи сделаны позже");
+                            return;
+                        }
+                        else if (Convert.ToInt32(richTextBox1.Text.Substring(x + 27, 2)) == EndM)
+                        {
+                            if (Convert.ToInt32(richTextBox1.Text.Substring(x + 30, 2)) > EndS)
+                            {
+                                MessageBox.Show("Все записи сделаны позже");
+                                return;
+                            }
+                        }
+                    }
+                    b = false;
+                }
+                if (Convert.ToInt32(richTextBox1.Text.Substring(x + 24, 2)) > StartH) break;
+                else if (Convert.ToInt32(richTextBox1.Text.Substring(x + 24, 2)) == StartH)
+                {
+                    if (Convert.ToInt32(richTextBox1.Text.Substring(x + 27, 2)) > StartM) break;
+                    else if (Convert.ToInt32(richTextBox1.Text.Substring(x + 27, 2)) == StartM)
+                    {
+                        if (Convert.ToInt32(richTextBox1.Text.Substring(x + 30, 2)) >= StartS) break;
+                    }
+                }   
+                z = x + 2;
+            }
+            z = x + 2;
+            while (true)
+            {
+                x1 = richTextBox1.Find("Вемя записи: ", z, RichTextBoxFinds.None);
+                if (x1 == -1)
+                {
+                    break;
+                }
+                if (Convert.ToInt32(richTextBox1.Text.Substring(x1 + 24, 2)) > EndH)
+                {
+                    break; 
+                }
+                else if (Convert.ToInt32(richTextBox1.Text.Substring(x1 + 24, 2)) == EndH)
+                {
+                    if (Convert.ToInt32(richTextBox1.Text.Substring(x1 + 27, 2)) > EndM)
+                    {
+                        break;
+                    }
+                    else if (Convert.ToInt32(richTextBox1.Text.Substring(x1 + 27, 2)) == EndM)
+                    {
+                        if (Convert.ToInt32(richTextBox1.Text.Substring(x1 + 30, 2)) > EndS)
+                        {
+                            break;
+                        }
+                    }
+                }
+                z = x1 + 2;
+            }
+            string mail = " ( Rostisla.lysenkov@mail.ru ) ";
+            z = x;
+            if (x1 == -1)
+                x1 = richTextBox1.Text.Length;
+            while (true)
+            {
+                if (richTextBox1.Find("String", z, x1, RichTextBoxFinds.None) == -1) break;
+                else
+                {
+                    richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.Find("string", z, x1, RichTextBoxFinds.None) + 6, mail);
+                    richTextBox1.Find("String", z, x1, RichTextBoxFinds.None);
+                    richTextBox1.SelectionColor = Color.Red;
+                    x1 += mail.Length;
+                }
+                z = richTextBox1.Find("string", z, x1, RichTextBoxFinds.None) + 2;
+            }
+            z = x;
+            if (x1 == -1)
+                x1 = richTextBox1.Text.Length;
+            while (true)
+            {
+                if (richTextBox1.Find("String", z, x1, RichTextBoxFinds.None) == -1) break;
+                else
+                {
+                    richTextBox1.Find("String", z, x1, RichTextBoxFinds.None);
+                    richTextBox1.SelectionColor = Color.Red;
+                }
+                z = richTextBox1.Find("string", z, x1, RichTextBoxFinds.None) + 2;
+            }
+            z = x;
+            if (x1 == -1)
+                x1 = richTextBox1.Text.Length;
+            while (true)
+            {
+                if (richTextBox1.Find(mail, z, x1, RichTextBoxFinds.None) == -1) break;
+                else
+                {
+                    richTextBox1.Find(mail, z, x1, RichTextBoxFinds.None);
+                    richTextBox1.SelectionColor = Color.Green;
+                }
+                z = richTextBox1.Find(mail, z, x1, RichTextBoxFinds.None) + 2;
+            }
+            MessageBox.Show("Готово");
         }
 
     }

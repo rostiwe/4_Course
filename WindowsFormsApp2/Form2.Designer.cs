@@ -42,14 +42,16 @@
             this.защитаОтВПToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.лабораторнаяРабота1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.лабораторнаяРабота2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.лабораторнаяРабота3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обАвтореToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.лабораторнаяРабота3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,6 +168,13 @@
             this.лабораторнаяРабота2ToolStripMenuItem.Text = "Лабораторная Работа 2";
             this.лабораторнаяРабота2ToolStripMenuItem.Click += new System.EventHandler(this.лабораторнаяРабота2ToolStripMenuItem_Click);
             // 
+            // лабораторнаяРабота3ToolStripMenuItem
+            // 
+            this.лабораторнаяРабота3ToolStripMenuItem.Name = "лабораторнаяРабота3ToolStripMenuItem";
+            this.лабораторнаяРабота3ToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.лабораторнаяРабота3ToolStripMenuItem.Text = "Лабораторная Работа 3";
+            this.лабораторнаяРабота3ToolStripMenuItem.Click += new System.EventHandler(this.лабораторнаяРабота3ToolStripMenuItem_Click);
+            // 
             // обАвтореToolStripMenuItem
             // 
             this.обАвтореToolStripMenuItem.Name = "обАвтореToolStripMenuItem";
@@ -203,21 +212,32 @@
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 49);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(800, 379);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(491, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Поиск";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // textBox2
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(0, 49);
-            this.textBox2.Multiline = true;
+            this.textBox2.Location = new System.Drawing.Point(586, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(800, 379);
-            this.textBox2.TabIndex = 4;
-            // 
-            // лабораторнаяРабота3ToolStripMenuItem
-            // 
-            this.лабораторнаяРабота3ToolStripMenuItem.Name = "лабораторнаяРабота3ToolStripMenuItem";
-            this.лабораторнаяРабота3ToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.лабораторнаяРабота3ToolStripMenuItem.Text = "Лабораторная Работа 3";
+            this.textBox2.Size = new System.Drawing.Size(73, 20);
+            this.textBox2.TabIndex = 6;
             // 
             // Form2
             // 
@@ -225,6 +245,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.textBox1);
@@ -262,7 +284,9 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripMenuItem лабораторнаяРабота1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem лабораторнаяРабота2ToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ToolStripMenuItem лабораторнаяРабота3ToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
